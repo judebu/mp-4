@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <header className="border-b border-neutral-400 bg-white">
+          <nav className="mx-auto flex items-center justify-between px-4 py-4">
+            <Link href="/" className="text-lg font-semibold text-neutral-900">
+              Jude Hosmer | CS391 Stock App 
+            </Link>
+            <div className="flex gap-5 text-sm">
+
+              <Link href="/" className="text-neutral-700 hover:text-neutral-900">
+                Home
+              </Link>
+
+              <Link href="/about" className="text-neutral-700">
+                About
+              </Link>
+
+            </div>
+          </nav>
+        </header>
+        <main className=" max-w-4xl px-4 py-4">{children}</main>
+        
       </body>
     </html>
   );
